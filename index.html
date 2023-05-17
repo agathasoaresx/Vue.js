@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo Vue.js</title>
+    <script src="./vue.js"></script>
+    <style>
+        .verde {
+            color: green;
+        }
+        .negrito {
+            font-weight: bold;
+        }
+        .azul{
+            background-color: blue;
+        }
+        .branco {
+            background-color: white;
+        }
+        .vermelho {
+            background-color: red;
+        }
+        .borda {
+            border: 1px solid;
+        }
+
+        .principal {
+            width: 200px;
+            height: 200px;
+        }
+
+        .comum {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+        
+        </style>
+</head>
+<body>
+    <div id="app">
+      <div class="borda principal" :class="cor">
+
+      </div>
+      <div class="borda comum" @click="mudarCor('verde')"></div>
+      <div class="borda comum"></div>
+      <div class="borda comum"></div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                cor: "branco",
+            },
+            methods: {
+                mudarCor(c) {
+                    this.cor = c;
+                }
+            }
+               
+        });
+        console.log(vm);
+    </script>
+    
+</body>
+</html>
