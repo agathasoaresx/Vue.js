@@ -42,21 +42,33 @@
 <body>
     <div id="app">
       <div class="borda principal" :class="cor">
-
+        Cor: {{ cor }}
+        <br />
+        Posição X do mouse: {{ posicaoX }}
+        <br /> 
+        Posição Y do mouse: {{ posicaoY }}
       </div>
       <div class="borda comum" @click="mudarCor('verde')"></div>
-      <div class="borda comum"></div>
-      <div class="borda comum"></div>
+      <div class="borda comum" @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')"></div>
+      <div class="borda comum" @mousemove="coordenadas($event)"></div>
     </div>
     <script>
         const vm = new Vue({
             el: "#app",
             data: {
                 cor: "branco",
+                posicaoX: 0,
+                posicaoY: 0,
+
             },
             methods: {
                 mudarCor(c) {
                     this.cor = c;
+                },
+                coordenadas(evento) {
+                    this.posicaoX = evento.clientX;
+                    this.posicaoY = evento.clientY;
+                    console.log(evento);
                 }
             }
                
